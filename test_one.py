@@ -1,7 +1,7 @@
 import pytest
 import main
 
-
+a = 'text1'
 
 
 def test_add():
@@ -17,7 +17,7 @@ def test_equlity():
     a,b = 7,7
     assert a == b
 
-@pytest.mark.skip
+@pytest.mark.skipif(a == 'text', reason="var is a str")
 def test_type_error():
     a = 'text'
     with pytest.raises(TypeError):

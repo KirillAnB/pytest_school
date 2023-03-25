@@ -7,7 +7,7 @@ def main_print():
     print("deactivate test")
 
 def awesome_func(param):
-    if not isinstance(param, int):
+    if not isinstance(param, str):
         raise TypeError
     print(param)
 
