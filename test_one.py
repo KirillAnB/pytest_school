@@ -2,7 +2,7 @@ import pytest
 import main
 
 
-
+a = 'text'
 
 def test_add():
     a,b = 2,5
@@ -11,13 +11,12 @@ def test_add():
 def test_remove():
     a,b = 7,4
     assert a - b == 3
-@pytest.mark.mirror
-@pytest.mark.smoke
+@pytest.mark.xfail
 def test_equlity():
-    a,b = 7,7
+    a,b = 7,8
     assert a == b
 
-@pytest.mark.skip
+@pytest.mark.skipif(a=='text', reason='A is the text')
 def test_type_error():
     a = 'text'
     with pytest.raises(TypeError):
