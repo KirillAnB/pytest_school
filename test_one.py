@@ -3,13 +3,20 @@ import main
 
 a = 'text1'
 
-
-def test_add():
-    a,b = 2,5
+@pytest.fixture()
+def printer():
+    print("connection to db")
+    yield
+    print("connection closed")
+@pytest.mark.parametrize('a',[3,4,5])
+@pytest.mark.parametrize('b',[5,4,3])
+def test_add(printer, a, b):
     assert a+b == 7
 # @pytest.mark.skip()
-def test_remove():
-    a,b = 7,4
+
+@pytest.mark.parametrize('a',[1,2,3,4,5,6,7,8])
+def test_remove(printer, a):
+    b = 4
     assert a - b == 3
 @pytest.mark.mirror
 @pytest.mark.smoke
