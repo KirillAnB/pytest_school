@@ -1,4 +1,5 @@
 import pytest
+from temp_fixtures import db_connector
 
 @pytest.fixture()
 def print_init():
@@ -6,6 +7,6 @@ def print_init():
     yield
     print("Deactivate testing")
 
-def test_pow(print_init):
+def test_pow(db_connector):
     a,b = 2,3
     assert a**b == 8

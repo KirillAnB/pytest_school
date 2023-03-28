@@ -1,5 +1,6 @@
 import pytest
 import main
+from temp_fixtures import data_for_test
 
 a = 'text1'
 
@@ -25,7 +26,7 @@ def test_equlity():
     assert a == b
 
 @pytest.mark.skipif(a == 'text', reason="var is a str")
-def test_type_error():
-    a = 'text'
+def test_type_error(data_for_test):
+    a = data_for_test
     with pytest.raises(TypeError):
         main.awesome_func(a)
