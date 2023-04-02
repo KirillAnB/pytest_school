@@ -3,12 +3,9 @@ import main
 from temp_fixtures import data_for_test
 
 a = 'text1'
+user = 'Kirill'
 
-@pytest.fixture()
-def printer():
-    print("connection to db")
-    yield
-    print("connection closed")
+
 @pytest.mark.parametrize('a',[3,4,5])
 @pytest.mark.parametrize('b',[5,4,3])
 def test_add(printer, a, b):
@@ -30,3 +27,5 @@ def test_type_error(data_for_test):
     a = data_for_test
     with pytest.raises(TypeError):
         main.awesome_func(a)
+def test_user_creator(db_connector, user=user):
+    assert True == main.crud(user)
